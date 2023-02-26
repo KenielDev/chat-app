@@ -14,7 +14,7 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.chat-header {
+.chatHeader {
   background-color: #333;
   color: #fff;
   padding: 10px;
@@ -23,9 +23,13 @@
   border-top-right-radius: 5px;
 }
 
-.chat-window {
+.chatWindow {
   height: 500px;
   overflow-y: scroll;
+  background-image: url("../public/bgImageChat.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .boxTextUserPrimary {
@@ -42,14 +46,13 @@
   border-radius: 6px;
   color: white;
   width: 40%;
-  margin-right: auto;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
 }
 
-.message-list {
+.listMessage {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -59,14 +62,14 @@
   gap: 10px;
 }
 
-.chat-input {
+.chatForm {
   display: flex;
   align-items: center;
   padding: 10px;
   border-top: 1px solid #ccc;
 }
 
-.message-input {
+.messageInput {
   flex: 1;
   border: none;
   outline: none;
@@ -74,18 +77,16 @@
   font-size: 14px;
 }
 
-.send-button {
+.sendButton {
   border: none;
   outline: none;
   background-color: #333;
-  color: #fff;
   font-size: 14px;
   padding: 5px 10px;
   cursor: pointer;
-}
-
-.send-button:hover {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }

@@ -1,13 +1,6 @@
-import React from "react";
-
-interface ChatProps {
-  username: string;
-  children?: React.ReactNode;
-  adicionaMensagens: () => void;
-  mensagensList: any;
-  mensage: string;
-  setMensagem: (e: { target: { value: React.SetStateAction<string> } }) => void;
-}
+import React, { useRef } from "react";
+import { ChatProps, MensagensProps } from "../interfaces/interfaces";
+import IconSendMessage from "./IconSendMessage";
 
 const Chat: React.FC<ChatProps> = ({
   username,
@@ -16,34 +9,48 @@ const Chat: React.FC<ChatProps> = ({
   mensage,
   setMensagem,
 }) => {
-  console.log(mensagensList);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  function submitForm(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    adicionaMensagens();
+    formRef.current?.reset();
+    setMensagem({ target: { value: "" } });
+  }
+
   return (
     <div className="contentChat">
       <div className="card">
-        <div className="chat-header">Chat - {username}</div>
-        <div className="chat-window">
-          <ul className="message-list">
-            {mensagensList.map((mensagem: any) => {
-              return mensagem.user !== username ? (
-                <li className="boxTextUserSecondary">{mensagem.mensagens}</li>
-              ) : (
-                <li className="boxTextUserPrimary">{mensagem.mensagens}</li>
+        <div className="chatHeader">Chat - {username}</div>
+        <div className="chatWindow">
+          <ul className="listMessage">
+            {mensagensList.map((mensagem: MensagensProps) => {
+              return (
+                <li
+                  className={`${
+                    mensagem.user !== username
+                      ? "boxTextUserSecondary"
+                      : "boxTextUserPrimary"
+                  }`}
+                >
+                  {mensagem.mensagens}
+                </li>
               );
             })}
           </ul>
         </div>
-        <div className="chat-input">
+        <form ref={formRef} className="chatForm" onSubmit={submitForm}>
           <input
             onChange={setMensagem}
             type="text"
             value={mensage}
-            className="message-input"
-            placeholder="Type your message here"
+            className="messageInput"
+            placeholder="Escreva a sua mensagem..."
           />
-          <button onClick={adicionaMensagens} className="send-button">
-            Send
+          <button type="submit" className="sendButton">
+            <IconSendMessage />
           </button>
-        </div>
+        </form>
       </div>
       <div>{/* <button onClick={limparChat}>Limpar chat</button> */}</div>
     </div>

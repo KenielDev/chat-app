@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Chat from "./components/Chat";
 import "./App.css";
-import { MensagensProps } from "./components/chat/interfaces";
+import { MensagensProps } from "./interfaces/interfaces";
 
 const App: React.FC = () => {
   const [mensagensList, setMensagensList] = useState<MensagensProps[]>([]);
@@ -33,8 +33,8 @@ const App: React.FC = () => {
         setMensagem={(e: { target: { value: React.SetStateAction<string> } }) =>
           setMensagemJoao(e.target.value)
         }
-        username="João"
-        adicionaMensagens={() => adicionaMensagem("João", mensagemJoao)}
+        username="Bi"
+        adicionaMensagens={() => adicionaMensagem("Bi", mensagemJoao)}
         mensage={mensagemJoao}
         mensagensList={mensagensList}
       />
