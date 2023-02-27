@@ -13,16 +13,12 @@ const App: React.FC = () => {
       ...prevstate,
       { user: username, mensagens: state },
     ]);
-
-    // setState(value);
   }
 
   return (
     <div className="bodyHome">
       <Chat
-        setMensagem={(e: { target: { value: React.SetStateAction<string> } }) =>
-          setMensagemKeniel(e.target.value)
-        }
+        setMensagem={(e) => setMensagemKeniel(e.target.value)}
         username="Keniel"
         adicionaMensagens={() => adicionaMensagem("Keniel", mensagemKeniel)}
         mensage={mensagemKeniel}
@@ -30,11 +26,9 @@ const App: React.FC = () => {
       />
 
       <Chat
-        setMensagem={(e: { target: { value: React.SetStateAction<string> } }) =>
-          setMensagemJoao(e.target.value)
-        }
-        username="Bi"
-        adicionaMensagens={() => adicionaMensagem("Bi", mensagemJoao)}
+        setMensagem={(e) => setMensagemJoao(e.target.value)}
+        username="João"
+        adicionaMensagens={() => adicionaMensagem("João", mensagemJoao)}
         mensage={mensagemJoao}
         mensagensList={mensagensList}
       />

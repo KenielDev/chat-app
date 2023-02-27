@@ -9,5 +9,5 @@ export interface ChatProps {
   adicionaMensagens: () => void;
   mensagensList: any;
   mensage: string;
-  setMensagem: (e: { target: { value: React.SetStateAction<string> } }) => void;
+  setMensagem: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

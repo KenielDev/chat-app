@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { ChatProps, MensagensProps } from "../interfaces/interfaces";
 import IconSendMessage from "./IconSendMessage";
+import Swal from "sweetalert2";
+import TextBox from "./TextBox";
 
 const Chat: React.FC<ChatProps> = ({
   username,
@@ -9,39 +11,54 @@ const Chat: React.FC<ChatProps> = ({
   mensage,
   setMensagem,
 }) => {
+  const [digitando, setDigitando] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   function submitForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    adicionaMensagens();
+
+    setDigitando(false);
+
+    mensage === ""
+      ? Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Vazio não dá brow 😕",
+        })
+      : adicionaMensagens();
     formRef.current?.reset();
-    setMensagem({ target: { value: "" } });
+    // setMensagem("");
   }
 
   return (
     <div className="contentChat">
       <div className="card">
-        <div className="chatHeader">Chat - {username}</div>
+        <div className="chatHeader">
+          Chat - {username} - <span className="dotOnline"></span>{" "}
+          {digitando ? "Digitando..." : "Online"}
+        </div>
         <div className="chatWindow">
           <ul className="listMessage">
-            {mensagensList.map((mensagem: MensagensProps) => {
+            {mensagensList.map((mensagem: MensagensProps, index: number) => {
               return (
-                <li
-                  className={`${
-                    mensagem.user !== username
-                      ? "boxTextUserSecondary"
-                      : "boxTextUserPrimary"
-                  }`}
-                >
-                  {mensagem.mensagens}
-                </li>
+                <TextBox
+                  key={index}
+                  message={mensagem.mensagens}
+                  position={mensagem.user === username ? "right" : "left"}
+                />
               );
             })}
           </ul>
         </div>
         <form ref={formRef} className="chatForm" onSubmit={submitForm}>
           <input
-            onChange={setMensagem}
+            onChange={(event) => {
+              setMensagem(event);
+              setDigitando(true);
+            }}
+            onBlur={() => {
+              setDigitando(false);
+            }}
             type="text"
             value={mensage}
             className="messageInput"

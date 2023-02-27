@@ -1,3 +1,13 @@
+body {
+  background-color: #333333;
+  color: #fff;
+}
+
+input {
+  background-color: #333;
+  color: #fff;
+}
+
 .bodyHome {
   height: 100vh;
   display: flex;
@@ -9,14 +19,16 @@
 .card {
   width: 400px;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .chatHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
   background-color: #333;
-  color: #fff;
   padding: 10px;
   font-size: 18px;
   border-top-left-radius: 5px;
@@ -32,24 +44,67 @@
   background-repeat: no-repeat;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
 .boxTextUserPrimary {
   background-color: rgb(68, 68, 149);
-  padding: 4px;
-  border-radius: 6px;
-  color: white;
-  width: 40%;
+  padding: 8px;
+  border-radius: 8px 8px 0px 8px;
+  max-width: 75%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   margin-left: auto;
+  margin-top: 0;
+  word-wrap: break-word;
+  -webkit-border-radius: 8px 8px 0px 8px;
+  -moz-border-radius: 8px 8px 0px 8px;
+  -ms-border-radius: 8px 8px 0px 8px;
+  -o-border-radius: 8px 8px 0px 8px;
 }
+
 .boxTextUserSecondary {
   background-color: rgb(66, 164, 94);
-  padding: 4px;
-  border-radius: 6px;
-  color: white;
-  width: 40%;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
-  -o-border-radius: 6px;
+  padding: 8px;
+  max-width: 75%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  margin-right: auto;
+  margin-top: 0;
+  word-wrap: break-word;
+  border-radius: 8px 8px 8px 0px;
+  -webkit-border-radius: 8px 8px 8px 0px;
+  -moz-border-radius: 8px 8px 8px 0px;
+  -ms-border-radius: 8px 8px 8px 0px;
+  -o-border-radius: 8px 8px 8px 0px;
+}
+
+.dotOnline {
+  background-color: rgb(94, 255, 0);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  height: 10px;
+  width: 10px;
+  border-radius: 99999px;
+  -webkit-border-radius: 99999px;
+  -moz-border-radius: 99999px;
+  -ms-border-radius: 99999px;
+  -o-border-radius: 99999px;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
 }
 
 .listMessage {
@@ -66,6 +121,7 @@
   display: flex;
   align-items: center;
   padding: 10px;
+  background-color: #333;
   border-top: 1px solid #ccc;
 }
 
