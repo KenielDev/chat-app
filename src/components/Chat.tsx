@@ -14,6 +14,13 @@ const Chat: React.FC<ChatProps> = ({
   const [digitando, setDigitando] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
+  function handleChange(eventValue: string) {
+    const fakeEvent = {
+      target: { value: eventValue },
+    } as React.ChangeEvent<HTMLInputElement>;
+    setMensagem(fakeEvent);
+  }
+
   function submitForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -27,7 +34,7 @@ const Chat: React.FC<ChatProps> = ({
         })
       : adicionaMensagens();
     formRef.current?.reset();
-    // setMensagem("");
+    handleChange("");
   }
 
   return (

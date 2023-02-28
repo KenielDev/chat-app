@@ -146,3 +146,19 @@ input {
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
 }
+
+@media (max-width: 768px) {
+  .bodyHome {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .card {
+    width: 300px;
+  }
+  .chatWindow {
+    height: 400px;
+  }
+}
